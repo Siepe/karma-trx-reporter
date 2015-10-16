@@ -44,11 +44,11 @@ var TRXReporter = function (baseReporterDecorator, config, emitter, logger, help
             .att('name', 'Karma Test Run')
             .att('id', newGuid());
 			
-		testRun.ele('Times')
-			.att('creation', getTimestamp())
-			.att('queuing', getTimestamp())
-			.att('start', getTimestamp())
-			.att('finish', getTimestamp());
+        testRun.ele('Times')
+            .att('creation', getTimestamp())
+            .att('queuing', getTimestamp())
+            .att('start', getTimestamp())
+            .att('finish', getTimestamp());
 
         resultSummary = testRun.ele('ResultSummary');
         counters = resultSummary.ele('Counters');
@@ -107,8 +107,8 @@ var TRXReporter = function (baseReporterDecorator, config, emitter, logger, help
 
     this.specSuccess = this.specSkipped = this.specFailure = function (browser, result) {
         var unitTestId = newGuid();
-        var unitTestName = browser.name + '_' + result.description;
         var className = result.suite.join('.');
+        var unitTestName = className + ' ' + result.description;
         var codeBase = className + '.' + unitTestName;
 
         var unitTest = testDefinitions.ele('UnitTest')
