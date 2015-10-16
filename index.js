@@ -101,8 +101,8 @@ var TRXReporter = function (baseReporterDecorator, config, emitter, logger, help
 
     this.specSuccess = this.specSkipped = this.specFailure = function (browser, result) {
         var unitTestId = newGuid();
-        var unitTestName = browser.name + '_' + result.description;
         var className = result.suite.join('.');
+        var unitTestName = className + ' ' + result.description;
         var codeBase = className + '.' + unitTestName;
 
         var unitTest = testDefinitions.ele('UnitTest')
